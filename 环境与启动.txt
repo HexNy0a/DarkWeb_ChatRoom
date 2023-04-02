@@ -6,4 +6,4 @@
 python3
 python库：Flask、pycryptodome、requests
 
-启动 AllPyStart.bat 即可
+启动 AllPyStart.bat 后访问1289端口即可
