@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>暗网聊天室</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename = 'css/chat.css') }}">
+  </head>
+  
+  <body>
+    <div id="menu">
+      <div id="logo">暗网聊天室</div>
+      <div id="options">
+        <ul>
+          <li>个人资料</li>
+          <li>设置</li>
+          <li>退出</li>
+          <button id="plugin-btn">插件</button>
+        </ul>
+      </div>
+    </div>
+    <div id="chat-container">
+      <div id="chat-messages">
+        <div class="message-row">
+          <div class="message-sender">LeiyNeKo</div>
+          <div class="message-content mine">嘿！我的博客你有看吗，哪天有时间可以看一看哦：
+            <a href="https://www.cnblogs.com/LeiyNeKo/">https://www.cnblogs.com/LeiyNeKo/</a>
+          </div>
+          <div class="message-time">2023-04-01 14:32</div>
+        </div>
+        <div class="message-row">
+          <div class="message-sender">CTFer</div>
+          <div class="message-content">好的，最近有什么新消息吗？</div>
+          <div class="message-time">2023-04-01 14:35</div>
+        </div>
+        <div class="message-row">
+          <div class="message-sender">LeiyNeKo</div>
+          <div class="message-content mine">有呀，我发现咱们浏览器有个大问题，本地访问9999端口有惊喜！</div>
+          <div class="message-time">2023-04-01 14:37</div>
+        </div>
+        <div class="message-row">
+          <div class="message-sender">LeiyNeKo</div>
+          <div class="message-content mine">哦对了，新开的那个特别热门的站点，绝对有你想要的东西：<a href="/shop">点我进入宇宙商城</a></div>
+          <div class="message-time">2023-04-01 14:38</div>
+        </div>
+        <div class="message-row">
+          <div class="message-sender">CTFer</div>
+          <div class="message-content">他们这网站崩了啊</div>
+          <div class="message-time">2023-04-01 14:40</div>
+        </div>
+        <div class="message-row">
+          <div class="message-sender">LeiyNeKo</div>
+          <div class="message-content mine">还真是，他们最近一直在聊天室私聊这些来宣传网站：<br>Get ctfshow{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx} for discover dark web secrets. High quality, low price. Perfect for aspiring hackers!</div>
+          <div class="message-time">2023-04-01 14:42</div>
+        </div>
+      </div>
+      <div id="chat-input">
+        <textarea placeholder="Say something..."></textarea>
+        <button>发送</button>
+      </div>
+    </div>
+  </body>
+
+</html>
+<script>
+  const pluginBtn = document.getElementById("plugin-btn");
+
+  pluginBtn.addEventListener("click", () =>{
+    // 创建一个菜单元素
+    const menu = document.createElement("div");
+    menu.id = "plugin-menu";
+
+    // 在菜单中添加一个拦截按钮
+    const blockBtn = document.createElement("button");
+    blockBtn.innerText = "拦截";
+    blockBtn.addEventListener("click", () =>{
+      window.location.href = "./intercept";
+    });
+    menu.appendChild(blockBtn);
+
+    // 将菜单添加到页面中
+    document.body.appendChild(menu);
+  });
+</script>

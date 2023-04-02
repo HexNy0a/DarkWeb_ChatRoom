@@ -1,0 +1,6 @@
+    if request.args.get('api', None) is not None:
+        api = request.args.get('api')
+        if re.search(r'^[\d\.:]+$', api):
+            get = requests.get('http://'+api)
+            html += '<!--'+get.text+'-->'
+    return html

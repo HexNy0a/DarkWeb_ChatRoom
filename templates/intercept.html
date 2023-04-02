@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>拦截</title>
+    <style>
+body {
+	background-color:#F7F7F7;
+	font-family:Arial,sans-serif;
+	font-size:16px;
+	line-height:1.5;
+	margin:0;
+	padding:0;
+}
+.container {
+	max-width:960px;
+	margin:0 auto;
+	padding:20px;
+}
+.section-header {
+	display:flex;
+	align-items:center;
+	margin-bottom:20px;
+}
+.section-header-text {
+	font-weight:bold;
+	font-size:20px;
+	margin-right:10px;
+}
+.section-header-input {
+	flex-grow:1;
+	padding:10px;
+	border:1px solid #ccc;
+	border-radius:5px;
+}
+.section-header-button {
+	margin-left:10px;
+	padding:10px 20px;
+	background-color:#4CAF50;
+	color:#fff;
+	border:none;
+	border-radius:5px;
+	cursor:pointer;
+}
+.article {
+	background-color:#fff;
+	padding:20px;
+	border-radius:5px;
+}
+.article-title {
+	font-size:24px;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+.article-image {
+	display:block;
+	margin-bottom:20px;
+	max-width:100%;
+	height:auto;
+	border-radius:5px;
+}
+.article-content {
+	font-size:18px;
+	line-height:1.5;
+}
+    </style>
+  </head>
+  
+  <body>
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-text">你的私钥：</div>
+        <input type="text" class="section-header-input" placeholder="暂未分发" id="private_key"/>
+      </div>
+      <div class="section-header">
+        <div class="section-header-text">传来的原始数据：</div>
+        <input type="text" class="section-header-input" placeholder="暂未收到" id="ciphertext"/>
+      </div>
+      <form action="/pass_message" method="post">
+      <div class="section-header">
+        <div class="section-header-text">解密后的数据：</div>
+        <input type="text" class="section-header-input" placeholder="暂未解密" id="plaintext" name="message"/>
+        <button type="submit" class="section-header-button">传递给下一个节点</button>
+      </div>
+      <form>
+      <div class="article">
+        <h1 class="article-title">三层代理基本原理</h1>
+        <img class="article-image" src="{{ url_for('static', filename = '0.png') }}" alt="文章图片">
+        <p class="article-content">作者：LeiyNeKo，持续肝了两天的题目
+          <br>
+          <br>(密文1)通过私钥1解密为(密文2+IP2)
+          <br>(密文2)通过私钥2解密为(密文3+IP3)
+          <br>(密文3)通过私钥3解密为(明文+IP用户B)
+          <br>
+          <br>from Crypto.PublicKey import RSA
+          <br>from Crypto.Cipher import PKCS1_v1_5
+          <br>
+          <br># 加密
+          <br>def encrypt(plaintext, public_key):
+          <br>&emsp;cipher = PKCS1_v1_5.new(RSA.importKey(public_key))
+          <br>
+          <br>&emsp;ciphertext = ''
+          <br>&emsp;for i in range(0, len(plaintext), 128):
+          <br>&emsp;&emsp;ciphertext += cipher.encrypt(plaintext[i:i+128].encode('utf-8')).hex()
+          <br>
+          <br>&emsp;return ciphertext</p>
+          <br>。。。
+          <br>key = RSA.generate(2048)
+          <br>public_key1 = key.publickey().export_key()
+          <br>private_key1 = key.export_key()
+      </div>
+    </div>
+  </body>
+
+</html>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+setInterval("update()", "3000"); // 每3秒调用一次update函数
+
+function update() {
+        $.ajax({
+            url: '/update',
+            success: function (gap) {
+                arr = gap.split('@');
+                document.getElementById("private_key").value = arr[0];
+                document.getElementById("ciphertext").value = arr[1];
+                document.getElementById("plaintext").value = arr[2];
+            }
+        })
+}
+</script>

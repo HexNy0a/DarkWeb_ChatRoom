@@ -1,0 +1,144 @@
+/* Set defaults */ * {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+/* Global styles */ body {
+	background-color:#2B2B2B;
+	color:#EEE;
+	font-family:Arial,sans-serif;
+}
+/* Menu */ #menu {
+	background-color:#1F1F1F;
+	height:50px;
+	padding:5px 20px;
+	box-shadow:0px 1px 5px #333;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	z-index:1;
+}
+#logo {
+	float:left;
+	font-size:24px;
+	line-height:40px;
+}
+#options {
+	float:right;
+	margin-right:50px;
+	line-height:40px;
+}
+#options ul {
+	list-style:none;
+}
+#options ul li {
+	float:left;
+	margin-left:20px;
+	cursor:pointer;
+}
+#options ul li:hover {
+	color:#AAA;
+}
+/* Chat container */ #chat-container {
+	margin:70px auto 0;
+	width:1300px;
+	height:660px;
+	background-color:#1F1F1F;
+	padding:20px;
+	box-shadow:0px 1px 5px #333;
+	position:relative;
+}
+/* Chat messages */ #chat-messages {
+	height:500px;
+	overflow-y:scroll;
+	margin-top:10px;
+	list-style:none;
+	padding:0;
+}
+.message-row {
+	margin-bottom:10px;
+	display:flex;
+}
+.message-content {
+	padding:5px;
+	background-color:#444;
+	display:inline-block;
+	border-radius:5px;
+	margin-right:10px;
+	flex:1;
+	font-size:14px;
+	max-width:84%;
+	word-wrap:break-word;
+}
+.message-sender {
+	font-weight:bold;
+	margin-bottom:5px;
+	margin-right:10px;
+}
+.mine {
+	background-color:#357DED;
+	color:#fff;
+	align-self:flex-end;
+}
+.other {
+	background-color:#E5E5EA;
+	color:#000;
+}
+.message-time {
+	font-size:12px;
+	color:#888;
+}
+/* Chat input */ #chat-input {
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	right:10px;
+	background-color:#000000;
+	padding:7px;
+	box-shadow:0px -1px 5px #333;
+}
+#chat-input textarea {
+	background:transparent;
+	border:none;
+	resize:none;
+	outline:none;
+	font-family:'Courier New',Courier,monospace;
+	color:#ccc;
+	font-size:14px;
+	width:100%;
+	height:30px;
+	margin-right:10px;
+	padding:5px;
+}
+#chat-input button {
+	border:none;
+	background-color:#333;
+	color:#fff;
+	font-size:14px;
+	padding:5px 10px;
+	cursor:pointer;
+}
+#plugin-btn {
+	position:absolute;
+	top:10px;
+	right:10px;
+	padding:10px;
+	background-color:#888;
+	border:1px solid #ccc;
+	border-radius:5px;
+	cursor:pointer;
+}
+#plugin-btn:hover {
+	background-color:#888;
+}
+#plugin-menu {
+	position:absolute;
+	top:50px;
+	right:8px;
+	padding:10px;
+	background-color:#fff;
+	border:1px solid #ccc;
+	border-radius:5px;
+	cursor:pointer;
+}
